@@ -13,6 +13,7 @@ interface Game {
   name: string;
   background_image: string;
   parent_platforms: { plaform: Platform }[];
+  metacritic: number;
 }
 interface FetchGamesResponse {
   count: number;
@@ -48,6 +49,7 @@ const GameGrid = () => {
             imagePath={game.background_image}
             gameHeader={game.name}
             platforms={game.parent_platforms}
+            score={game.metacritic}
           />
         ))}
       </SimpleGrid>
