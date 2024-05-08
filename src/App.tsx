@@ -9,7 +9,7 @@ const App = () => {
       gridTemplateRows={"50px 1fr 30px"}
       gridTemplateColumns={"150px 1fr"}
       h="200px"
-      gap="1"
+      gap="5"
     >
       <GridItem pl="2" area={"nav"}>
         <NavBar />
@@ -19,7 +19,7 @@ const App = () => {
           Aside
         </GridItem>
       </Show>
-      <GridItem pl="2" bg="blue.300" area={"main"}>
+      <GridItem pl="2" area={"main"}>
         <GameGrid />
       </GridItem>
     </Grid>
