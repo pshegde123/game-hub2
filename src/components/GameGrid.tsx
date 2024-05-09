@@ -19,7 +19,7 @@ interface FetchGamesResponse {
   count: number;
   results: Game[];
 }
-const GameGrid = () => {
+const GameGrid = ({ clickedGenre }) => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
 
@@ -33,7 +33,21 @@ const GameGrid = () => {
       .catch((err) => {
         setError(err.message);
       });
-  });
+  }, []);
+
+  useEffect(() => {
+    apiClient
+      .get<FetchGenreResponse>("/games", {
+        params: { genres: clickedGenre?.id },
+      })
+      .then((res) => {
+        console.log(res.data.results);
+        setGames(res.data.results);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }, [clickedGenre]);
 
   return (
     <>

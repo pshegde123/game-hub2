@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { Text, List, ListItem, Image, HStack } from "@chakra-ui/react";
+import {
+  Button,
+  List,
+  ListItem,
+  Image,
+  HStack,
+  Spinner,
+} from "@chakra-ui/react";
 interface Genre {
   id: number;
   name: string;
@@ -10,9 +17,14 @@ interface FetchGenreResponse {
   count: number;
   results: Genre[];
 }
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: Props) => {
   const [genre, setGenres] = useState<Genre[]>([]);
   const [error, setError] = useState("");
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   useEffect(() => {
     apiClient
@@ -20,12 +32,14 @@ const GenreList = () => {
       .then((res) => {
         //console.log(res.data.results);
         setGenres(res.data.results);
+        setIsDataLoaded(true);
       })
       .catch((err) => {
         setError(err.message);
       });
-  });
+  }, []);
 
+  if (!isDataLoaded) return <Spinner />;
   return (
     <ul>
       {genre.map((g) => (
@@ -33,7 +47,13 @@ const GenreList = () => {
           <ListItem key={g.id} paddingY="5px">
             <HStack>
               <Image boxSize="32px" borderRadius={8} src={g.image_background} />
-              <Text fontSize="lg">{g.name}</Text>
+              <Button
+                fontSize="lg"
+                variant="link"
+                onClick={() => onSelectGenre(g)}
+              >
+                {g.name}
+              </Button>
             </HStack>
           </ListItem>
         </List>
