@@ -10,6 +10,7 @@ interface Genre {
 }
 const App = () => {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [searchTextValue, setSearchTextValue] = useState<string>("");
 
   return (
     <Grid
@@ -21,7 +22,11 @@ const App = () => {
       gap="5"
     >
       <GridItem pl="2" area={"nav"}>
-        <NavBar />
+        <NavBar
+          onSearch={(searchText) => {
+            setSearchTextValue(searchText);
+          }}
+        />
       </GridItem>
       <Show above="sm">
         <GridItem pl="2" area={"aside"} paddingY={5}>
@@ -29,7 +34,7 @@ const App = () => {
         </GridItem>
       </Show>
       <GridItem pl="2" area={"main"}>
-        <GameGrid clickedGenre={selectedGenre} />
+        <GameGrid clickedGenre={selectedGenre} searchInput={searchTextValue} />
       </GridItem>
     </Grid>
   );
