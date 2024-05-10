@@ -19,7 +19,17 @@ interface FetchGamesResponse {
   count: number;
   results: Game[];
 }
-const GameGrid = ({ clickedGenre, searchInput }) => {
+interface Genre {
+  id: number;
+  name: string;
+  image_background: string;
+}
+interface GameGridInterface {
+  clickedGenre: Genre | null;
+  searchInput: string;
+}
+
+const GameGrid = ({ clickedGenre, searchInput }: GameGridInterface) => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
 
@@ -37,7 +47,7 @@ const GameGrid = ({ clickedGenre, searchInput }) => {
 
   useEffect(() => {
     apiClient
-      .get<FetchGenreResponse>("/games", {
+      .get<FetchGamesResponse>("/games", {
         params: { genres: clickedGenre?.id },
       })
       .then((res) => {
@@ -51,7 +61,7 @@ const GameGrid = ({ clickedGenre, searchInput }) => {
 
   useEffect(() => {
     apiClient
-      .get<FetchGenreResponse>("/games", {
+      .get<FetchGamesResponse>("/games", {
         params: { search: searchInput },
       })
       .then((res) => {
