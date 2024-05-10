@@ -3,7 +3,18 @@ import { Heading } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 
-const GameCard = ({ imagePath, gameHeader, platforms, score }) => {
+interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+interface Props {
+  imagePath: string;
+  gameHeader: string;
+  platforms: Platform[];
+  score: number;
+}
+const GameCard = ({ imagePath, gameHeader, platforms, score }: Props) => {
   //console.log(platforms);
   return (
     <Card borderRadius={10} overflow="hidden">
