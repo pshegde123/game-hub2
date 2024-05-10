@@ -20,7 +20,7 @@ interface Platform {
   slug: string;
 }
 interface Props {
-  platformslist: Platform[];
+  platformslist: { platform: Platform }[];
 }
 
 const PlatformIconList = ({ platformslist }: Props) => {

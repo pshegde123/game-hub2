@@ -11,7 +11,7 @@ interface Platform {
 interface Props {
   imagePath: string;
   gameHeader: string;
-  platforms: Platform[];
+  platforms: { platform: Platform }[];
   score: number;
 }
 const GameCard = ({ imagePath, gameHeader, platforms, score }: Props) => {
