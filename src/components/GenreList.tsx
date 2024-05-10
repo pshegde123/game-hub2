@@ -7,6 +7,7 @@ import {
   Image,
   HStack,
   Spinner,
+  Text,
 } from "@chakra-ui/react";
 interface Genre {
   id: number;
@@ -40,6 +41,9 @@ const GenreList = ({ onSelectGenre }: Props) => {
   }, []);
 
   if (!isDataLoaded) return <Spinner />;
+  {
+    error && <Text>{error}</Text>;
+  }
   return (
     <ul>
       {genre.map((g) => (
