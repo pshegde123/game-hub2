@@ -1,4 +1,4 @@
-# Game Hub (React + TypeScript + Vite)
+# Game Hub (React + TypeScript + Chakra UI + Vite)
 
 ![game_hub_landing_page](./src/assets/game_hub.png)
 
