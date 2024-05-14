@@ -6,4 +6,4 @@
 
 # Description:
 ##### This project is done as part of the [Code With Mosh](https://codewithmosh.com) React course. 
-##### The project uses API endpoints provided by [RAWGIO](https://rawg.io/apidocs).
+##### The project uses API endpoints provided by [RAWG.IO](https://rawg.io/apidocs).
