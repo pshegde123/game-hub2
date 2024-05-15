@@ -7,3 +7,4 @@
 # Description:
 ##### This project is done as part of the [Code With Mosh](https://codewithmosh.com) React course. 
 ##### The project uses API endpoints provided by [RAWG.IO](https://rawg.io/apidocs).
+##### The project helps user to search a game based on game name, genre. For each game its user ratings and platform details are displayed. 
